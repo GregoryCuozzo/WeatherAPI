@@ -1,0 +1,64 @@
+body{
+    background-image:url("../Ressources/Pictures/sky.png");
+    padding-top:100px;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+h1{
+    text-align:center;
+    color:white;
+}
+
+
+h4{
+    text-align:center;
+    color:white;
+}
+
+p#register{
+    text-align:center;
+    background-color: white;
+    border-radius:30px;
+}
+
+#aud{
+    padding-top:10px;
+    text-align:center;
+    display:none;
+}
+
+#error{
+    text-align:center;
+    background-color: white;
+    border-radius:30px;
+    color:red;
+    text-decoration-width: 30px;
+    padding-right:20px;
+    padding-left:10px;
+
+}
+
+img{
+    height:40px;
+    border-radius:10px;
+    padding-top:5px;
+    padding-right:5px;
+
+}
+
+img#logo{
+    height: 200px;
+    text-align:center;
+}
+
+a:hover{
+    color:white;
+}
+
+p#loginpage{
+   text-align:center;
+    background-color:white;
+    border-radius:30px;
+
+
+}
