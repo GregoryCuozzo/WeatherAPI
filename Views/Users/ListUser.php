@@ -1,5 +1,6 @@
 
-<!-- --------------------------------------- members list ---------------------------------------------------------- -->
+
+<!-- --------------------------------------------- members list ----------------------------------------------------- -->
 
 <?php if (!empty($user)): ?>
 
@@ -12,8 +13,7 @@
 
             <th scope="col">Username </th>
             <th scope="col">Email</th>
-            <th scope="col">Update </th>
-            <th scope="col"> Cancel</th>
+
 
         </tr>
         </thead>
@@ -22,17 +22,7 @@
             <tr>
                 <td><?= $per->__get('username'); ?></td>
                 <td><?= $per->__get('email'); ?></td>
-                <td class="cell100 column2">
-                    <a href="/user/edit/<?= $per ->__get('id')?>">
-                        <i class="fa fa-refresh" aria-hidden="true"></i>
-                    </a>
-                </td>
 
-                <td class="cell100 column2">
-                    <a href="/user/delete/<?=$per ->__get('id')?>">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </a>
-                </td>
 
             </tr>
         <?php endforeach; ?>
@@ -40,5 +30,6 @@
         </tbody>
     </table>
     <?php endif; ?>
+
 
 

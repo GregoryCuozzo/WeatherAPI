@@ -9,12 +9,14 @@ class User
     private $session_token;
     private $session_time;
 
-    public function __construct($id,$username,$password, $email){
+    public function __construct($id,$username,$password, $email,$session_time=false, $session_token= false){
 
         $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
+        $this->session_time=$session_time;
+        $this->session_token=$session_token;
 
 
 

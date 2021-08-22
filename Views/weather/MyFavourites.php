@@ -1,5 +1,6 @@
 
 
+<!-- ----------------------------------- display favorites table ---------------------------------------------------- -->
 
 <div class="col-md-4 offset-md-3 col-sm-12">
         <h2 style="color:white"> My Favourites </h2>

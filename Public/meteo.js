@@ -1,33 +1,9 @@
+// ------------------------------------------- search Data -------------------------------------------------------------
+
 $(document).ready(function() {
 
+    let country = false;
 
-    $('form.loc').on('submit',function(d){
-        d.preventDefault();
-        $.get("http://api.openweathermap.org/data/2.5/find?lat=50.7&lon=4.6&cnt=50&appid=c21a75b667d6f7abb81f118dcf8d4611&units=metric",function() {
-
-        }).done(function(data){
-            showme(data);
-
-        }).fail(function(error){
-            alert("error on localisation")
-        })
-
-
-    })
-
-    function showme(data){
-
-        for (var i=0; i<data.length; i++){
-            var temp = data[i].weather;
-            console.log(temp);
-        }
-
-
-
-
-
-
-    }
 
     $('form.queryloc').on('submit', function(e) {
         e.preventDefault();
@@ -56,7 +32,14 @@ $(document).ready(function() {
         temp.innerHTML= data.main.temp;
         weather_desc.innerHTML= data.weather.description;
 
-    }})
+    }
 
+})
 
+// ------------------------------------------- other functions ---------------------------------------------------------
 
+function favorites(){
+    console.log("try");
+    let country =
+
+}

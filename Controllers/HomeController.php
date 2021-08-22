@@ -135,6 +135,46 @@ class HomeController
         header('Location:/user/members');
     }
 
+    public function edit($id)
+    {
+        $UserDao = new UserDAO();
+        $User = $UserDao->getUserById($id);
+        include('../Views/MemberEdition.php');
+
+    }
+
+    public function update($id,$data){
+
+
+        if(empty($_POST['username']) ||  empty($_POST['email'])
+            or
+            (empty($_POST['username'])  and empty($_POST['email']))){
+            $this -> throwErrorup("error1");
+        }elseif(isset($_POST['username']) and  isset($_POST['email'])){
+            if(!checkFormatMail($_POST['email'])){
+                $this->throwErrorup("error3");
+            }elseif(!checkUserName($_POST['username'])){
+                $this->throwErrorup("error4");
+            }else{
+                $UserDAO = new UserDAO();
+                $User = $UserDAO->update($id,$data);
+                $this->updatepass("your profil has been updated");
+            }
+
+        }
+    }
+    function updatepass($pass_up){
+
+        header("Location:/Login.php?pass=" .$pass_up);
+    }
+    function throwErrorup($error_number)
+    {
+        header("Location: /MemberEdition.php/edit?errorup=" .$error_number);
+
+    }
+
+
+
 
 
 }

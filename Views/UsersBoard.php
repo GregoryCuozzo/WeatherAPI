@@ -1,9 +1,8 @@
 
 <?php include('Templates/Head.php'); ?>
 
-
-
 <h1 style="text-align:center;"> Dashboard</h1>
+
 
 <!-- ------------------------------------------- navigation bar --------------------------------------------------- -->
 
@@ -16,7 +15,10 @@
                 <input type="text" name="recherche" id="recherche">
                 <input type="submit" value="show me the weather ">
             </form>
+
+
         </section>
+
 
 <!-- ----------------------------------------- display data -------------------------------------------------------- -->
 

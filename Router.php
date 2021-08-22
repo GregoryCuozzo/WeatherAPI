@@ -12,7 +12,7 @@ class Router {
     public function __construct() {
         $this->get = $_GET;
         $this->post = $_POST;
-        $this->actions = ['index','login','board','create','register','members','delete'];
+        $this->actions = ['index','login','board','create','register','members','delete','update','edit'];
         $this->controllers = ['index'=>'HomeController','login'=>'UserController','create'=>'HomeController','user'=>'HomeController','logout'=>'LogoutController'];
         $this->request = array();
         $this->data = $this->parseURI($_SERVER['REQUEST_URI']);

@@ -4,7 +4,7 @@ class CountryDAO
 {
     public function __construct () {
 
-        parent::__construct('users');
+        parent::__construct('country');
     }
 
 
@@ -12,7 +12,8 @@ class CountryDAO
         return new User(
             $result['id'],
             $result['country'],
-            $result['city']
+            $result['city'],
+            $result['user']
 
         );
     }
@@ -22,15 +23,16 @@ class CountryDAO
         return new User(
             $result['id'],
             $result['country'],
-            $result['city']
+            $result['city'],
+            $result['user']
         );
     }
     public function createNew ($result) {
         return new User(
             $result['id'],
             $result['country'],
-            $result['city']
-
+            $result['city'],
+            $result['user']
         );
     }
 
@@ -51,15 +53,39 @@ class CountryDAO
     }
 
     function store ($data) {
-        $username = htmlspecialchars($_POST['username']);
-        $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
-        $email = htmlspecialchars($_POST['email']);
 
-        $query= $this->connection ->query("INSERT INTO countries(country,city,)VALUES('$username','$password','$email')");
+        if(empty($data['country']) || empty($data['city']) || empty($data['user'])) {
+            return false;
+        }
 
+        $country = $this->create(
+            [
+                'id'=> 0,
+                'country'=> $data['name'],
+                'city' => $data['image'],
+                'user_id'=> $data['pokemon_id']
 
+            ]
+        );
+
+        if ($country) {
+            try {
+                $statement = $this->connection->prepare(
+                    "INSERT INTO {$this->table} (country, city, user) VALUES (?, ?, ?, ?)"
+                );
+                $statement->execute([
+                    htmlspecialchars($country->name),
+                    htmlspecialchars($country->image),
+                    htmlspecialchars($pokemon->pokemon_id),
+                    htmlspecialchars($pokemon->user),
+                ]);
+                return true;
+            } catch(PDOException $e) {
+                print $e->getMessage();
+                return false;
+            }
+        }
     }
-
 
 
     public function update($id, $data){

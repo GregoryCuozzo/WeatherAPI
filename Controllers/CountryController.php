@@ -1,6 +1,8 @@
 <?php
 
-class CountryController
+class CountryController extends AbstractController
 {
+
+
 
 }

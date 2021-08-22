@@ -27,7 +27,7 @@ class AbstractController
         var_dump('no show');
     }
 
-    public function update ($id, $data) {
+    public function update($id, $data) {
         var_dump('no update');
     }
 

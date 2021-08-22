@@ -1,3 +1,6 @@
+
+<!-- ------------------------------------------ display search data ------------------------------------------------ -->
+
 <?php if( !empty("recherche")): ?>
     <div class="col-md-4 offset-md-3 col-sm-12 " >
     <h1 style="text-align:center;">  </h1>
@@ -9,7 +12,7 @@
                 <th scope="col">Temperature min</th>
                 <th scope="col">Temperature </th>
                 <th scope="col">Temperature max </th>
-                <th scope="col"> weather description</th>
+                <th scope="col"> Add to favourite</th>
             </tr>
         </thead>
         <tbody>
@@ -19,10 +22,11 @@
                 <td id="temp_min"></td>
                 <td id="temp"></td>
                 <td id="temp_max"></td>
-                <td id="weather_desc"></td>
+                <td id="Add_to_favourites"><input type="button"  onclick="favorites()" value="Add" > </td>
             </tr>
         </tbody>
     </table>
+
 </div>
 
 <?php endif; ?>

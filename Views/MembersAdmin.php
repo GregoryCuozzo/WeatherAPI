@@ -3,7 +3,7 @@
 
 
 <?php
-include('Templates/UserNav.php');
+include('Templates/AdminNav.php');
 include('Users/ListAdmin.php');
 include ('Templates/Foot.php')
 ?>
