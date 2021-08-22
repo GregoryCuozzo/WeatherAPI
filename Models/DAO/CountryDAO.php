@@ -11,24 +11,38 @@ class CountryDAO extends AbstractDAO
     function create ($result) {
         return new Country(
             $result['id'],
-            $result['city']
+            $result['ville'],
+            $result['pays']
+
 
 
         );
+    }
+    public function fetchAll () {
+        try {
+            $statement = $this->connection->prepare("SELECT * FROM {$this->table}");
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $this->createAllDeep($result);
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
     }
 
 
     function deepCreate ($result) {
         return new Country(
             $result['id'],
-            $result['data']
-
+            $result['ville'],
+            $result['pays'],
+            $result['User_ID']
         );
     }
     public function createNew ($result) {
         return new Country(
             $result['id'],
-            $result['data']
+            $result['ville'],
+            $result['pays']
         );
     }
 
@@ -49,30 +63,33 @@ class CountryDAO extends AbstractDAO
     }
 
     function store ($result) {
-        $place = $this->create(
+
+        $country = $this->create(
             [
                 'id'=> 0,
-                'city'=> $result['ville'],
+                'ville'=> $result['ville'],
+                'pays' => $result['pays'],
 
             ]
         );
-
-        if ($place) {
+        if($country){
             try {
-                $statement = $this->connection->prepare(
-                    "INSERT INTO {$this->table} (data) VALUES (?)"
-                );
-                $statement->execute([
-                    htmlspecialchars($place->city),
-
-                ]);
-                return true;
-            } catch(PDOException $e) {
-                print $e->getMessage();
-                return false;
-            }
+                $statement = $this->connection->prepare("INSERT INTO {$this->table} (ville, pays) VALUES (?,?)");
+        $statement->execute([
+            htmlspecialchars($country->ville),
+            htmlspecialchars($country->pays)
+        ]);
+        return true;
+    } catch(PDOException $e) {
+        print $e->getMessage();
+        return false;
+    }
         }
     }
+
+
+
+
 
 
     public function update($id, $data){

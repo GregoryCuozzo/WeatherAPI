@@ -3,15 +3,19 @@
 class Country
 {
     private $id;
-    private $data;
+    private $ville;
+    private $pays ;
+    private $user_id ;
 
 
 
 
-    public function __construct($id,$data){
+    public function __construct($id,$ville,$pays, $user_id= false){
 
         $this->id = $id;
-        $this->data = $data;
+        $this->ville = $ville;
+        $this->pays =$pays;
+        $this->user_id =$user_id;
 
 
 

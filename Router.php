@@ -14,7 +14,7 @@ class Router {
         $this->post = $_POST;
         $this->actions = ['index','login','board','create','register','members','delete','update','edit','store'];
         $this->controllers = ['index'=>'HomeController','login'=>'UserController','create'=>'HomeController',
-                                'user'=>'HomeController','logout'=>'LogoutController','country'=>'CountryController'];
+                                'user'=>'HomeController','logout'=>'LogoutController','country'=>'CountryController','favorite'=>'FavoriteController'];
         $this->request = array();
         $this->data = $this->parseURI($_SERVER['REQUEST_URI']);
         $this->dispatch();

@@ -47,10 +47,11 @@ $(document).ready(function() {
         temp_min.innerHTML = data.main.temp_min;
         temp_max.innerHTML= data.main.temp_max;
         temp.innerHTML= data.main.temp;
-        pays = data.name;
+        pays = data.sys.country;
+        ville = data.name;
         place = {
             pays : pays,
-            ville: data.name,
+            ville: ville,
         };
 
 
