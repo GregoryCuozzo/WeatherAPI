@@ -2,7 +2,7 @@
 session_start();
 include("../Controllers/functions.php");
 
-class HomeController
+class HomeController extends AbstractController
 {
 
 
@@ -127,6 +127,11 @@ class HomeController
             }
 
         }
+    }
+
+    public function fetch ($data){
+
+        $this->dao ->getIdByUsername();
     }
 
     public function delete($id)

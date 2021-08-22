@@ -2,8 +2,10 @@
 
 $(document).ready(function() {
 
-    let country = false;
+    // -------------------------------- variables --------------------------------------------------
+    let place = false ;
 
+    // -------------------------------- search form ------------------------------------------------
 
     $('form.queryloc').on('submit', function(e) {
         e.preventDefault();
@@ -12,34 +14,53 @@ $(document).ready(function() {
 
         }).done(function(data) {
             callBackGetSuccess(data);
+
         }).fail(function(error) {
             alert(queryloc + " does not exist ");
         });
     });
 
+    $('button.add-to-fav').on('click', function(){
+
+        console.log(place)
+
+
+        $.post('/country/store',place).done(function(result){
+            let $result=  $(result);
+
+        }).fail(function(error){
+            alert('problem');
+        })
+    })
+
+    // --------------------------------- search succeded ------------------------------------------
+
     function callBackGetSuccess(data){
-        console.log(data);
         var country = document.getElementById("country");
         var city = document.getElementById("city")
         var temp_min= document.getElementById("temp_min");
         var temp = document.getElementById("temp");
         var temp_max = document.getElementById("temp_max");
-        let weather_desc = document.getElementById("weather_desc");
+
         country.innerHTML =  data.sys.country;
         city.innerHTML = data.name;
         temp_min.innerHTML = data.main.temp_min;
         temp_max.innerHTML= data.main.temp_max;
         temp.innerHTML= data.main.temp;
-        weather_desc.innerHTML= data.weather.description;
+        pays = data.name;
+        place = {
+            pays : pays,
+            ville: data.name,
+        };
+
+
+        $('button.add-to-fav').show();
+
 
     }
+ // ------------------------------------------- add to favorites -------------------------------------------------------
+
+
 
 })
 
-// ------------------------------------------- other functions ---------------------------------------------------------
-
-function favorites(){
-    console.log("try");
-    let country =
-
-}

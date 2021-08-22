@@ -15,9 +15,9 @@
                 <input type="text" name="recherche" id="recherche">
                 <input type="submit" value="show me the weather ">
             </form>
-
-
+            <button class="add-to-fav" style="display:none">Ajouter au favoris</button>
         </section>
+
 
 
 <!-- ----------------------------------------- display data -------------------------------------------------------- -->

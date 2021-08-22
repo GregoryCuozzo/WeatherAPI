@@ -12,7 +12,7 @@
                 <th scope="col">Temperature min</th>
                 <th scope="col">Temperature </th>
                 <th scope="col">Temperature max </th>
-                <th scope="col"> Add to favourite</th>
+
             </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
                 <td id="temp_min"></td>
                 <td id="temp"></td>
                 <td id="temp_max"></td>
-                <td id="Add_to_favourites"><input type="button"  onclick="favorites()" value="Add" > </td>
+
             </tr>
         </tbody>
     </table>

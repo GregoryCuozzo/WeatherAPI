@@ -3,17 +3,15 @@
 class Country
 {
     private $id;
-    private $country;
-    private $city;
-    private $user;
+    private $data;
 
 
-    public function __construct($id,$country,$city,$user = false){
+
+
+    public function __construct($id,$data){
 
         $this->id = $id;
-        $this->country = $country;
-        $this->city = $city;
-        $this->user = $user;
+        $this->data = $data;
 
 
 

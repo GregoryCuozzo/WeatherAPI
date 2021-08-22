@@ -1,6 +1,6 @@
 <?php
 
-class CountryDAO
+class CountryDAO extends AbstractDAO
 {
     public function __construct () {
 
@@ -9,30 +9,26 @@ class CountryDAO
 
 
     function create ($result) {
-        return new User(
+        return new Country(
             $result['id'],
-            $result['country'],
-            $result['city'],
-            $result['user']
+            $result['city']
+
 
         );
     }
 
 
     function deepCreate ($result) {
-        return new User(
+        return new Country(
             $result['id'],
-            $result['country'],
-            $result['city'],
-            $result['user']
+            $result['data']
+
         );
     }
     public function createNew ($result) {
-        return new User(
+        return new Country(
             $result['id'],
-            $result['country'],
-            $result['city'],
-            $result['user']
+            $result['data']
         );
     }
 
@@ -52,32 +48,23 @@ class CountryDAO
         }
     }
 
-    function store ($data) {
-
-        if(empty($data['country']) || empty($data['city']) || empty($data['user'])) {
-            return false;
-        }
-
-        $country = $this->create(
+    function store ($result) {
+        $place = $this->create(
             [
                 'id'=> 0,
-                'country'=> $data['name'],
-                'city' => $data['image'],
-                'user_id'=> $data['pokemon_id']
+                'city'=> $result['ville'],
 
             ]
         );
 
-        if ($country) {
+        if ($place) {
             try {
                 $statement = $this->connection->prepare(
-                    "INSERT INTO {$this->table} (country, city, user) VALUES (?, ?, ?, ?)"
+                    "INSERT INTO {$this->table} (data) VALUES (?)"
                 );
                 $statement->execute([
-                    htmlspecialchars($country->name),
-                    htmlspecialchars($country->image),
-                    htmlspecialchars($pokemon->pokemon_id),
-                    htmlspecialchars($pokemon->user),
+                    htmlspecialchars($place->city),
+
                 ]);
                 return true;
             } catch(PDOException $e) {
