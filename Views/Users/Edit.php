@@ -25,7 +25,7 @@
 
 <div class="formulaire" style="margin-left:600px;margin-right:600px">
     <h2 style="text-align:center"> Modify an owner's information</h2> <hr>
-        <form action="/user/update" method="post" class="form-style-9">
+        <form action="/user/edit" method="post" class="form-style-9">
             <ul style="list-style: none;">
 
                 <input name="id" type="hidden" value="<?= $User->__get('id')?>">

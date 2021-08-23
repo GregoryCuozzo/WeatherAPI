@@ -106,7 +106,7 @@ class UserDAO extends AbstractDAO
         }
     }
 
-    public function update($id, $data){
+    public function update( $data){
 
 
         try {

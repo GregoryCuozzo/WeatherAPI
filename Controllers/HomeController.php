@@ -183,8 +183,9 @@ class HomeController extends AbstractController
             }elseif(!checkUserName($_POST['username'])){
                 $this->throwErrorup("error4");
             }else{
-                $UserDAO = new UserDAO();
-                $User = $UserDAO->update($id,$data);
+                $UserDao = new UserDao();
+                $User = $UserDao->update($data);
+
                 include('../Views/MemberEdition.php');
             }
 
