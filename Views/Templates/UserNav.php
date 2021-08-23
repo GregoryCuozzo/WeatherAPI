@@ -7,7 +7,7 @@
 
         <ul class="nav navbar-nav " style="margin:auto"; >
             <li class="nav-item"><a class="nav-link" href="/user/board"><i class="fa fa-inbox"></i> My dashboard </a></li>
-            <li class="nav-item"><a class="nav-link" href="/communication"><i class="fa fa-inbox"></i> My favorite destinations </a></li>
+            <li class="nav-item"><a class="nav-link" href="/favorite"><i class="fa fa-inbox"></i> Members' favorite places </a></li>
             <li class="nav-item"><a class="nav-link" href="/user/members"><i class="fa fa-address-book"></i> other members </a></li>
             <li class="nav-item"><a class="nav-link" href="/logout">logout  </a></li>
         </ul>

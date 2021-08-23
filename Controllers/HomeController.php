@@ -38,13 +38,35 @@ class HomeController extends AbstractController
 
         }
 
+    public function boarda(){
+        $user = $this->dao->fetchAll();
+        $_SESSION['expire'] = time() + (1 * 60);
+        $now=time();
+
+        if(!empty($_SESSION['username'])){
+
+            include('../Views/AdminBoard.php');
+        }elseif( $now > $_SESSION['expire']) {
+            session_destroy();
+            include('../Views/Login.php');
+        }else{
+            include('../Views/Login.php');
+        }
+
+    }
+
 
     public function members(){
         $user = $this->dao->fetchAll();
         $_SESSION['expire'] = time() + (1 * 60);
         $now = time();
         if(!empty($_SESSION['username'])){
-            include('../Views/MembersAdmin.php');
+            if($_SESSION['username']== 'Admin2021'){
+                include('../Views/MembersAdmin.php');
+            }else{
+                include('../Views/Members.php');
+            }
+
         }elseif( $now > $_SESSION['expire']){
             session_destroy();
             include('../Views/Login.php');
@@ -99,7 +121,7 @@ class HomeController extends AbstractController
                 $_SESSION['username']= $_POST['username'];
                 $_SESSION['start']= time();
                 $_SESSION['expire']=  $_SESSION['start'] + (1 * 60);
-                header("Location:/admin/index");
+                header("Location:/user/boarda");
             }
 
 
@@ -163,15 +185,12 @@ class HomeController extends AbstractController
             }else{
                 $UserDAO = new UserDAO();
                 $User = $UserDAO->update($id,$data);
-                $this->updatepass("your profil has been updated");
+                include('../Views/MemberEdition.php');
             }
 
         }
     }
-    function updatepass($pass_up){
 
-        header("Location:/Login.php?pass=" .$pass_up);
-    }
     function throwErrorup($error_number)
     {
         header("Location: /MemberEdition.php/edit?errorup=" .$error_number);

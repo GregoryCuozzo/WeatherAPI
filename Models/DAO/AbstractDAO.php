@@ -7,7 +7,7 @@ class AbstractDAO
 
     public function __construct ($table) {
         $this->table = $table;
-        $this->connection = new PDO('mysql:host=localhost;dbname=freegames', 'root', '');
+        $this->connection = new PDO('mysql:host=localhost;dbname=weather', 'root', '');
         $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 

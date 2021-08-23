@@ -54,7 +54,6 @@ $(document).ready(function() {
             ville: ville,
         };
 
-
         $('button.add-to-fav').show();
 
 

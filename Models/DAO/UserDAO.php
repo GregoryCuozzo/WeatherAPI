@@ -8,7 +8,6 @@ class UserDAO extends AbstractDAO
     }
 
 
-
     function create ($result) {
         return new User(
             $result['id'],
@@ -108,14 +107,13 @@ class UserDAO extends AbstractDAO
     }
 
     public function update($id, $data){
-        $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+
 
         try {
             $statement = $this->connection->prepare(
-                "UPDATE {$this->table} SET username = ?,pwd = ?, email= ?,  WHERE id = ?");
+                "UPDATE {$this->table} SET username = ?, email= ?,  WHERE id = ?");
             $statement->execute([
                 htmlspecialchars($data['username']),
-                $password,
                 htmlspecialchars($data['email']),
                 htmlspecialchars($data['id']),
 
